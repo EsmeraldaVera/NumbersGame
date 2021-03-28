@@ -1,2 +1,31 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+import random
+
+
+def start_game():
+    attempts=0
+    
+    print("Welcome to the NUMBER GUESSING GAME!")
+    numb= random.randint(1,50)
+    guess=input("Please choose a number between 1 and 50.  ")
+    guess=int(guess)
+    
+    while guess !=numb:
+        try:
+            if guess > numb:
+                guess=input("Its lower! Please try again.  ")
+                guess = int(guess)
+                attempts= attempts + 1
+                
+            elif guess<numb:
+                guess = input("Its higher! Please try again.  ")
+                guess = int(guess)
+                attempts= attempts +1
+                
+        except ValueError as err:
+            guess=input("Uh oh, this is a numbers game, only enter numbers between 1 and 50.  ")
+            guess=int(guess)
+
+    if numb == guess: 
+        print("You got it! You guessed the right number in {} tries! ".format(attempts))
+
+start_game()
